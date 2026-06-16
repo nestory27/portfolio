@@ -1940,4 +1940,11 @@ def main(page: ft.Page):
 
 
 if __name__ == "__main__":
-    ft.app(target=main, view=ft.AppView.FLET_APP)
+    import os
+
+    # Use the PORT provided by Render (or default to 8501 locally)
+    port = int(os.environ.get("PORT", 8501))
+    host = "0.0.0.0"
+
+    # For server deployment use the web browser view and bind to host/port
+    ft.app(target=main, view=ft.AppView.WEB_BROWSER, host=host, port=port)
